@@ -1,18 +1,17 @@
-import 'package:dreamio/utils/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'views/pages/home_page.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'app/app.dart';
+import 'app/data/data.dart';
+import 'app/injection_container.dart' as di;
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  // Register Hive adapters
+  Hive.registerAdapter(DreamModelAdapter());
+  Hive.registerAdapter(ActionModelAdapter());
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.darkThemeMode,
-      home: const HomePage(),
-    );
-  }
+  await di.init();
+  runApp(const DreamioApp());
 }
