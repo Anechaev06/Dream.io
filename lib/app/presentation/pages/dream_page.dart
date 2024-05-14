@@ -24,7 +24,7 @@ class DreamPage extends StatelessWidget {
                 final dream = state.dreams[index];
                 return Slidable(
                   key: Key(dream.id),
-                  startActionPane: ActionPane(
+                  endActionPane: ActionPane(
                     motion: const ScrollMotion(),
                     children: [
                       SlidableAction(

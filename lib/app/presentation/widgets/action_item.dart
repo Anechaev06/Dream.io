@@ -13,21 +13,18 @@ class ActionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Slidable(
       key: Key(action.id),
-      startActionPane: ActionPane(
+      endActionPane: ActionPane(
         motion: const ScrollMotion(),
         children: [
           SlidableAction(
-            onPressed: (context) {
-              // Handle edit
-            },
+            onPressed: (context) {},
             backgroundColor: Colors.blue,
             icon: Icons.edit,
             label: 'Edit',
           ),
           SlidableAction(
-            onPressed: (context) {
-              context.read<ActionBloc>().add(DeleteActionEvent(action.id));
-            },
+            onPressed: (context) =>
+                context.read<ActionBloc>().add(DeleteActionEvent(action.id)),
             backgroundColor: Colors.red,
             icon: Icons.delete,
             label: 'Delete',
