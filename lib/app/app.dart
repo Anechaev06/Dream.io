@@ -17,7 +17,8 @@ class DreamioApp extends StatelessWidget {
       child: MaterialApp(
         initialRoute: AppRoutes.dreamPage,
         onGenerateRoute: AppRoutes.generateRoute,
-        theme: ThemeData.dark(),
+        theme: AppTheme.darkTheme,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
